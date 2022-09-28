@@ -1,10 +1,12 @@
 #include <SFML/Graphics.hpp>
+#include "Headers/Particle.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "Simple Particle System");
+    window.setFramerateLimit(60);
+
+    Particle testParticle(sf::Vector2f(800, 450), sf::Vector2f(1.0f, 1.0f), sf::Color::Green, 10.0f, 10.0f, 1.0f);
 
     while (window.isOpen())
     {
@@ -16,7 +18,9 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(testParticle.shape);
+        testParticle.move();
+        testParticle.update();
         window.display();
     }
 
