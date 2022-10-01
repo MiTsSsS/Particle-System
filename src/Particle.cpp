@@ -17,10 +17,10 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 }
 
 void Particle::move() {
-	//position.x += velocity.x * speed;
-	std::cout << position.y << std::endl;
-	position.x += 5 * sin(position.y / 25) * velocity.y;
 	position.y += velocity.y * speed;
+
+	//position.x += 5 * cos(position.x / 25);
+	position.x += 5 * sin(position.y / 25) * velocity.y;
 }
 
 void Particle::update() {
