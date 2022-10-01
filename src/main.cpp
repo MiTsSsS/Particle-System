@@ -11,7 +11,7 @@ void drawTrail(sf::RenderWindow& window, std::vector<Particle> particleVec) {
 }
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1600, 900), "Simple Particle System");
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Simple Particle System");
     window.setFramerateLimit(60);
 
     sf::Clock clock;
@@ -53,8 +53,8 @@ int main() {
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            for (int i = 0; i < 1000; i++) {
-                Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Green, 1.0f, 10.0f, 10.0f, 5.0f);
+            for (int i = 0; i < 150; i++) {
+                Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Green, rand() % 361, 10.0f, 10.0f, 3.0);
                 particleVec.push_back(testParticle);
             }
         }
@@ -65,7 +65,6 @@ int main() {
             window.draw(particleVec[i].shape);
             particleVec[i].move();
             particleVec[i].update();
-
         }
 
         float currentTime = clock.restart().asSeconds();
@@ -74,6 +73,8 @@ int main() {
         fpsCounter.setString("FPS: " + std::to_string(fps));
         particleCounter.setString("Particle Count: " + std::to_string(particleVec.size()));
         
+        drawTrail(window, particleVec);
+
         window.draw(particleCounter);
         window.draw(fpsCounter);
         window.display();

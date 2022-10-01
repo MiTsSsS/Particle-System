@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include "Headers/Particle.h"
 #include <cmath>
 #include <iostream>
@@ -6,7 +7,7 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 	this->position = position;
 	this->velocity = velocity;
 	this->color = color;
-	this->angle = angle;
+	this->angle = angle * (M_PI / 180);
 	this->radius = radius;
 	this->lifetime = lifetime;
 	this->speed = speed;
@@ -17,10 +18,8 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 }
 
 void Particle::move() {
-	position.y += velocity.y * speed;
-
-	//position.x += 5 * cos(position.x / 25);
-	position.x += 5 * sin(position.y / 25) * velocity.y;
+	position.y += sin(angle) * speed;
+	position.x += cos(angle) * speed;
 }
 
 void Particle::update() {
