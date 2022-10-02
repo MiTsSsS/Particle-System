@@ -1,6 +1,8 @@
 #define _USE_MATH_DEFINES
+
 #include "Headers/Particle.h"
 #include <cmath>
+#include <time.h>
 #include <iostream>
 
 Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color, double angle, double radius, double lifetime, double speed) {
@@ -18,8 +20,23 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 }
 
 void Particle::move() {
-	position.y += sin(angle) * speed;
-	position.x += cos(angle) * speed;
+	float newY = sin(angle) * speed;
+	float newX = cos(angle) * speed;
+
+	position.y += newY + directionChange;
+	position.x += newX;
+	
+	if (directionChange >= 1.0f) {
+		shouldFlipDirection = true;
+	}
+
+	else if(directionChange <= 1.0f && shouldFlipDirection == false) {
+		directionChange -= 0.2f;
+	}
+
+	if (shouldFlipDirection) {
+		directionChange += 0.2f;
+	}
 }
 
 void Particle::update() {

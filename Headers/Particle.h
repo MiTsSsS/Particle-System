@@ -3,10 +3,12 @@
 
 class Particle {
 private:
-	
 	sf::Vector2f velocity;
 	sf::Color color;
 	
+	bool shouldFlipDirection{ false };
+	float directionChange{ 1.0f };
+
 	double angle;
 	double radius;
 	double lifetime;

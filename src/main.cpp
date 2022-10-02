@@ -6,7 +6,6 @@
 void drawTrail(sf::RenderWindow& window, std::vector<Particle> particleVec) {
     for (int i = 0; i < particleVec.size(); i++) {
         window.draw(particleVec[i].shape);
-        //std::cout << particleVec.size() << std::endl;
     }
 }
 
@@ -37,8 +36,6 @@ int main() {
     particleCounter.setFillColor(sf::Color(sf::Color::White));
     particleCounter.setPosition(5.0, 25.0);
 
-    //Particle testParticle(sf::Vector2f(800, 450), sf::Vector2f(2.5f, 1.0f), sf::Color::Green, 1.0f, 10.0f, 10.0f, 5.0f);
-
     while (window.isOpen())
     {
         sf::Event event;
@@ -53,10 +50,13 @@ int main() {
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            for (int i = 0; i < 150; i++) {
-                Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Green, rand() % 361, 10.0f, 10.0f, 3.0);
-                particleVec.push_back(testParticle);
-            }
+            //for (int i = 0; i < 300; i++) {
+            //    Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color(rand() % 256, rand() % 256, rand() % 256), rand() % 361, 10.0f, 2.5f, 8.0f);
+            //    particleVec.push_back(testParticle);
+            //}
+
+            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 10.0f, 2.5f, 8.0f);
+            particleVec.push_back(testParticle);
         }
 
         window.clear();
