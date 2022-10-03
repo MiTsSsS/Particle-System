@@ -5,6 +5,8 @@ class Particle {
 private:
 	sf::Vector2f velocity;
 	sf::Color color;
+	sf::Clock clock;
+	sf::Time time;
 	
 	bool shouldFlipDirection{ false };
 	float directionChange{ 1.0f };

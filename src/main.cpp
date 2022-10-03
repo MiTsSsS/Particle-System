@@ -50,12 +50,12 @@ int main() {
         }
 
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            //for (int i = 0; i < 300; i++) {
-            //    Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color(rand() % 256, rand() % 256, rand() % 256), rand() % 361, 10.0f, 2.5f, 8.0f);
-            //    particleVec.push_back(testParticle);
-            //}
+            /*for (int i = 0; i < 300; i++) {
+                Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color(255, 255, 255), rand() % 361, 10.0f, 2.5f, 8.0f);
+                particleVec.push_back(testParticle);
+            }*/
 
-            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 10.0f, 2.5f, 8.0f);
+            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 5.0f, 1.0, 8.0f);
             particleVec.push_back(testParticle);
         }
 

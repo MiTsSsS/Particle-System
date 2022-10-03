@@ -1,5 +1,4 @@
 #define _USE_MATH_DEFINES
-
 #include "Headers/Particle.h"
 #include <cmath>
 #include <time.h>
@@ -40,5 +39,12 @@ void Particle::move() {
 }
 
 void Particle::update() {
+	time = clock.getElapsedTime();
+	//std::cout << time.asSeconds() << std::endl;
+	if (time.asSeconds() >= lifetime) {
+		this->shape.setRadius(0.0f);
+		return;
+	}
+
 	shape.setPosition(position);
 }
