@@ -18,6 +18,10 @@ Particle::Particle(sf::Vector2f position, sf::Vector2f velocity, sf::Color color
 	this->shape.setPosition(position);
 }
 
+double Particle::getLifetime() {
+	return lifetime;
+}
+
 void Particle::move() {
 	float newY = sin(angle) * speed;
 	float newX = cos(angle) * speed;
@@ -41,10 +45,7 @@ void Particle::move() {
 void Particle::update() {
 	time = clock.getElapsedTime();
 	//std::cout << time.asSeconds() << std::endl;
-	if (time.asSeconds() >= lifetime) {
-		this->shape.setRadius(0.0f);
-		return;
-	}
+	lifetime -= time.asSeconds();
 
 	shape.setPosition(position);
 }

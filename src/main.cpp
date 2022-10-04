@@ -1,7 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Headers/Particle.h"
+#include "Headers/ParticleManager.h"
+//#include "Headers/Particle.h"
 
 void drawTrail(sf::RenderWindow& window, std::vector<Particle> particleVec) {
     for (int i = 0; i < particleVec.size(); i++) {
@@ -12,6 +13,8 @@ void drawTrail(sf::RenderWindow& window, std::vector<Particle> particleVec) {
 int main() {
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Simple Particle System");
     window.setFramerateLimit(60);
+
+    ParticleManager particleManager;
 
     sf::Clock clock;
     float lastTime = 0;
@@ -52,26 +55,22 @@ int main() {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
             /*for (int i = 0; i < 300; i++) {
                 Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color(255, 255, 255), rand() % 361, 10.0f, 2.5f, 8.0f);
-                particleVec.push_back(testParticle);
+                //particleVec.push_back(testParticle);
+                particleManager.addParticle(testParticle);
             }*/
 
-            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 5.0f, 1.0, 8.0f);
-            particleVec.push_back(testParticle);
+            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 5.0f, 5.0f, 8.0f);
+            particleManager.addParticle(testParticle);
         }
 
         window.clear();
-        
-        for (int i = 0; i < particleVec.size(); i++) {
-            window.draw(particleVec[i].shape);
-            particleVec[i].move();
-            particleVec[i].update();
-        }
-
+                
+        particleManager.update(window);
         float currentTime = clock.restart().asSeconds();
         float fps = 1.0f / (currentTime - lastTime);
 
         fpsCounter.setString("FPS: " + std::to_string(fps));
-        particleCounter.setString("Particle Count: " + std::to_string(particleVec.size()));
+        particleCounter.setString("Particle Count: " + std::to_string(particleManager.getParticleCount()));
         
         drawTrail(window, particleVec);
 

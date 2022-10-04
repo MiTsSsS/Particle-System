@@ -10,7 +10,8 @@ public:
 	ParticleManager();
 	ParticleManager(std::vector<Particle>);
 
+	int getParticleCount();
 	void addParticle(Particle);
-	void removeParticle();
-	void update();
+	void removeParticle(int);
+	void update(sf::RenderWindow&);
 };

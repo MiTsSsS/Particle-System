@@ -21,6 +21,7 @@ public:
 	sf::Vector2f position;
 
 	Particle(sf::Vector2f, sf::Vector2f, sf::Color, double, double, double, double);
+	double getLifetime();
 	void move();
 	void update();
 };
