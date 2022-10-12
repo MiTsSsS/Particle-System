@@ -22,6 +22,14 @@ double Particle::getLifetime() {
 	return lifetime;
 }
 
+bool Particle::getIsActive() {
+	return isActive;
+}
+
+void Particle::setIsActive(bool active) {
+	this->isActive = active;
+}
+
 void Particle::move() {
 	float newY = sin(angle) * speed;
 	float newX = cos(angle) * speed;
@@ -48,4 +56,12 @@ void Particle::update() {
 	lifetime -= time.asSeconds();
 
 	shape.setPosition(position);
+}
+
+void Particle::reset() {
+	setIsActive(false);
+
+	position.x = 0.0f;
+	position.y = 0.0f;
+	lifetime = 5.0f;
 }

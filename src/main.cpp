@@ -15,6 +15,7 @@ int main() {
     window.setFramerateLimit(60);
 
     ParticleManager particleManager;
+    particleManager.initializeParticlePool();
 
     sf::Clock clock;
     float lastTime = 0;
@@ -59,12 +60,14 @@ int main() {
                 particleManager.addParticle(testParticle);
             }*/
 
-            Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 5.0f, 5.0f, 8.0f);
-            particleManager.addParticle(testParticle);
+            /*Particle testParticle(sf::Vector2f(sf::Mouse::getPosition(window)), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, rand() % 361, 5.0f, 5.0f, 8.0f);
+            particleManager.addParticle(testParticle);*/
+
+            particleManager.poolParticle(sf::Vector2f(sf::Mouse::getPosition(window)));
         }
 
         window.clear();
-                
+        
         particleManager.update(window);
         float currentTime = clock.restart().asSeconds();
         float fps = 1.0f / (currentTime - lastTime);

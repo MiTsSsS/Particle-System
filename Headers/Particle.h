@@ -8,6 +8,7 @@ private:
 	sf::Clock clock;
 	sf::Time time;
 	
+	bool isActive{ false };
 	bool shouldFlipDirection{ false };
 	float directionChange{ 1.0f };
 
@@ -22,6 +23,10 @@ public:
 
 	Particle(sf::Vector2f, sf::Vector2f, sf::Color, double, double, double, double);
 	double getLifetime();
+	bool getIsActive();
+
+	void setIsActive(bool active);
+	void reset();
 	void move();
 	void update();
 };
