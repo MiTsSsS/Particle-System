@@ -6,12 +6,14 @@ class ParticleManager {
 private:
 	std::vector<Particle> particles;
 	int particlePoolIterator {0};
+	int activeParticleCount{ 0 };
 
 public:
 	ParticleManager();
 	ParticleManager(std::vector<Particle>);
 
 	int getParticleCount();
+
 	void initializeParticlePool();
 	void addParticle(Particle);
 	void removeParticle(int);

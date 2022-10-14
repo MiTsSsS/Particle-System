@@ -10,8 +10,8 @@ private:
 	
 	bool isActive{ false };
 	bool shouldFlipDirection{ false };
+	
 	float directionChange{ 1.0f };
-
 	double angle;
 	double radius;
 	double lifetime;

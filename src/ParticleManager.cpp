@@ -8,7 +8,7 @@ ParticleManager::ParticleManager(std::vector<Particle> particles) {
 ParticleManager::ParticleManager() {}
 
 int ParticleManager::getParticleCount() {
-	return particles.size();
+	return activeParticleCount;
 }
 
 void ParticleManager::initializeParticlePool() {
@@ -28,8 +28,7 @@ void ParticleManager::removeParticle(int elementPosition) {
 
 void ParticleManager::poolParticle(sf::Vector2f position) {
 	particlePoolIterator++;
-
-	std::cout << particlePoolIterator << std::endl;
+	activeParticleCount++;
 
 	particles[particlePoolIterator].position = position;
 	particles[particlePoolIterator].setIsActive(true);
@@ -41,13 +40,14 @@ void ParticleManager::poolParticle(sf::Vector2f position) {
 void ParticleManager::update(sf::RenderWindow& window) {
 	for (int i = 0; i < particles.size(); i++) {
 		if (particles[i].getIsActive()) {
-			window.draw(particles[i].shape);
 			particles[i].move();
 			particles[i].update();
+			window.draw(particles[i].shape);
 
 			if (particles[i].getLifetime() <= 0) {
 				particles[i].reset();
+				activeParticleCount--;
 			}
-		}		
+		}	
 	}
 }

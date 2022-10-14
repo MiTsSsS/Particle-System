@@ -28,6 +28,9 @@ bool Particle::getIsActive() {
 
 void Particle::setIsActive(bool active) {
 	this->isActive = active;
+
+	if(active)
+		clock.restart();
 }
 
 void Particle::move() {
@@ -52,16 +55,13 @@ void Particle::move() {
 
 void Particle::update() {
 	time = clock.getElapsedTime();
-	//std::cout << time.asSeconds() << std::endl;
 	lifetime -= time.asSeconds();
-
 	shape.setPosition(position);
 }
 
 void Particle::reset() {
 	setIsActive(false);
-
-	position.x = 0.0f;
-	position.y = 0.0f;
+	shouldFlipDirection = false;
+	directionChange = 1.0f;
 	lifetime = 5.0f;
 }
