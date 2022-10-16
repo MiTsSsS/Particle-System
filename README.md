@@ -7,9 +7,9 @@ A simple particle system that is used to create blood-like particles on screen.
 - Using `sin` and `cos` to smoothly animate shapes.
 - Using object pooling to avoid creating/deleting objects at runtime.
 
-# Preview
-![](https://github.com/MiTsSsS/Particle-System/blob/master/Assets/GitHub/Preview.gif)
-
 # Future Work
 - Adding UI elements to edit the particles' properties at runtime, such as lifetime, color and more.
 - Adding a 2D camera with a view.
+
+# Preview
+![](https://github.com/MiTsSsS/Particle-System/blob/master/Assets/GitHub/Preview.gif)
