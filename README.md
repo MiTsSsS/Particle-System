@@ -10,6 +10,7 @@ A simple particle system that is used to create blood-like particles on screen.
 # Future Work
 - Adding UI elements to edit the particles' properties at runtime, such as lifetime, color and more.
 - Adding a 2D camera with a view.
+- Better code structuring.
 
 # Preview
 ![](https://github.com/MiTsSsS/Particle-System/blob/master/Assets/GitHub/Preview.gif)
