@@ -1,5 +1,5 @@
 # Introduction
-A simple particle system that is used to create blood-like particles on screen.
+A simple particle system that is used to create blood-like particles.
 
 # Lessons Learned
 - Using `sf::Mouse` to create objects at its screen and window position.
