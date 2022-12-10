@@ -1,3 +1,6 @@
+![Languages](https://img.shields.io/badge/-C++-%2303a9f4?style=for-the-badge&logo=cplusplus) 
+![SFML](https://img.shields.io/badge/SFML-brightgreen?style=for-the-badge&logo=sfml)
+
 # Introduction
 A simple particle system that is used to create blood-like particles.
 
