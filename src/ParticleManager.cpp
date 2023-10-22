@@ -1,5 +1,6 @@
 #include "headers/ParticleManager.h"
 
+#include <random>
 #include <iostream>
 
 int ParticleManager::getParticleCount() const {
@@ -7,7 +8,7 @@ int ParticleManager::getParticleCount() const {
 }
 
 void ParticleManager::initializeParticlePool() {
-	for (int i = 0; i < MAX_POOL_SIZE; i++) {
+	for (int i = 0; i < MAX_POOL_SIZE; ++i) {
 		m_particles.push_back(std::make_unique<Particle>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, 5.0f, rand() % 361, 5.0f, 8.0f));
 	}
 }
@@ -28,14 +29,14 @@ void ParticleManager::poolParticle(sf::Vector2f position) {
 }
 
 void ParticleManager::update(sf::RenderWindow& window) {
-	for (int i = 0; i < m_particles.size(); i++) {
-		if (m_particles[i]->getIsActive()) {
-			m_particles[i]->move();
-			m_particles[i]->update();
-			window.draw(m_particles[i]->getShape());
+	for (const std::unique_ptr<Particle>& particle : m_particles) {
+		if (particle->getIsActive()) {
+			particle->move();
+			particle->update();
+			window.draw(particle->getShape());
 
-			if (m_particles[i]->getLifetime() <= 0) {
-				m_particles[i]->reset();
+			if (particle->getLifetime() <= 0) {
+				particle->reset();
 				m_activeParticleCount--;
 			}
 		}
