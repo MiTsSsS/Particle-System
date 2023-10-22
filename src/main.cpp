@@ -1,7 +1,9 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include <vector>
 #include "Headers/ParticleManager.h"
+
+#include <SFML/Graphics.hpp>
+
+#include <vector>
+#include <iostream>
 
 void drawTrail(sf::RenderWindow& window, std::vector<Particle> particleVec) {
 	for (int i = 0; i < particleVec.size(); i++) {

@@ -12,12 +12,14 @@ public:
 	sf::CircleShape getShape() const;
 	sf::Vector2f getPosition() const;
 
+	void setPosition(sf::Vector2f position);
 	void setIsActive(bool active);
 	void reset();
 	void move();
 	void update();
 
 private:
+
 	sf::CircleShape m_shape;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_position;

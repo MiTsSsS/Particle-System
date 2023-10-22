@@ -1,5 +1,7 @@
 #define _USE_MATH_DEFINES
+
 #include "Headers/Particle.h"
+
 #include <cmath>
 #include <time.h>
 #include <iostream>
@@ -33,6 +35,10 @@ void Particle::setIsActive(bool active) {
 
 	if (active)
 		m_clock.restart();
+}
+
+void Particle::setPosition(sf::Vector2f position) {
+	m_position = position;
 }
 
 void Particle::move() {
