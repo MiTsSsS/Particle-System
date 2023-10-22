@@ -23,6 +23,7 @@ private:
 
 	Particles m_particles;
 
+	const int MAX_POOL_SIZE {10};
 	int m_particlePoolIterator {0};
 	int m_activeParticleCount {0};
 };

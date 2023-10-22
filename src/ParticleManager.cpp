@@ -7,7 +7,7 @@ int ParticleManager::getParticleCount() const {
 }
 
 void ParticleManager::initializeParticlePool() {
-	for (int i = 0; i < 999; i++) {
+	for (int i = 0; i < MAX_POOL_SIZE; i++) {
 		m_particles.push_back(std::make_unique<Particle>(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(2.5f, 1.0f), sf::Color::Red, 5.0f, rand() % 361, 5.0f, 8.0f));
 	}
 }
@@ -23,7 +23,7 @@ void ParticleManager::poolParticle(sf::Vector2f position) {
 	m_particles[m_particlePoolIterator]->setPosition(position);
 	m_particles[m_particlePoolIterator]->setIsActive(true);
 
-	if (m_particlePoolIterator == 999)
+	if (m_particlePoolIterator == MAX_POOL_SIZE - 1)
 		m_particlePoolIterator = 0;
 }
 
